@@ -114,4 +114,4 @@
     });
   };
 
-} ) ( this.metric_group = {} );
+} ) ( this.metrics = {} );
