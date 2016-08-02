@@ -1,4 +1,4 @@
-var my_test = ( function (exports) {
+( function (exports) {
 
   exports.test = function (thing) {
     console.log(thing);
