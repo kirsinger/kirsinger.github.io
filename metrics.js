@@ -1,3 +1,21 @@
+/*
+  Metrics Visualisation for Mode Analytics
+
+  Author: Kai Hirsinger (kai@edrolo.com)
+  Since:  2nd August 2016
+
+  Performs some simple metric visualisation using the results
+  of queries run in Mode Analytics.
+
+  Usage:
+  1) Import script via <script> tag in Mode report.
+  2) Create a new div element with the id "metrics-container".
+  3) Define a new <script> element at the end of the report that
+     declares the variable "metricQueries". This variable is an
+     array that stores the names of each query containing metrics
+     that should be rendered by the script.
+*/
+
 ( function (exports) {
 
   /* Objects */
@@ -63,13 +81,37 @@
       .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
+  function getQueryResultsByName (name) {
+    return datasets.filter(function(d) {
+      return d.queryName == name;
+    })[0].content;
+  }
 
-  /* Interface */
+  function sumDataColumn (data, columnName) {
+    return data
+      .map(function(d) {
+        return d[columnName];
+      })
+      .reduce(function(acc, curr) {
+        return acc + curr;
+      });
+  }
 
-  exports.createMetricGroup = function (title, data, containerId, labelled) {
+  function createMetricGroup (title, data, containerId, labelled) {
     var container = document.getElementById(containerId);
     var metrics   = new MetricGroup(title, data, container, labelled);
     metrics.create();
+  }
+
+
+  /* Interface */
+
+  exports.generate = function () {
+    metricQueries.forEach( function (query) {
+      var results   = getQueryResultsByName(query);
+      var container = "metrics-container";
+      createMetricGroup(query, results[0], container, true);
+    });
   };
 
 } ) ( this.metric_group = {} );
