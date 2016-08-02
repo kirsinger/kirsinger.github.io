@@ -4,4 +4,8 @@ var my_test = ( function () {
     console.log(thing);
   }
 
+  var tester = new test;
+
+  return tester;
+  
 } );
