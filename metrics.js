@@ -106,7 +106,7 @@
 
   /* Interface */
 
-  exports.generate = function () {
+  exports.generate = function (metricQueries) {
     metricQueries.forEach( function (query) {
       var results   = getQueryResultsByName(query);
       var container = "metrics-container";
