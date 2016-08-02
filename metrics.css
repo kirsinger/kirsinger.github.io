@@ -1,0 +1,18 @@
+div.metric-container {
+  float: left;
+  width: 33%;
+}
+
+p.metric-header {
+  font-size: 14pt;
+}
+
+p.metric-sub-header {
+  font-size: 10pt;
+  margin: 0px;
+}
+
+p.metric-value {
+  font-size: 20pt;
+  font-weight: bold;
+  margin: 0px;
