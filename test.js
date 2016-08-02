@@ -1,11 +1,7 @@
-var my_test = ( function () {
+var my_test = ( function (exports) {
 
-  function test(thing) {
+  exports.test = function (thing) {
     console.log(thing);
-  }
+  };
 
-  var tester = new test;
-
-  return tester;
-  
-} );
+} ) (this.tester = {} );
