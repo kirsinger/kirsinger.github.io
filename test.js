@@ -1,5 +1,3 @@
-module.exports.test = test;
-
-function test() {
-  console.log("Hi!");
+function test(thing) {
+  console.log(thing);
 }
