@@ -49,10 +49,10 @@
 
   MetricGroup.prototype._createMetric = function(value, label) {
     var metricElement = document.createElement("div");
-    metricElement.setAttribute("class", "col-md-12");
+    metricElement.setAttribute("class", "col-md-4");
 
     if (label) {
-      var header = document.createElement("h5");
+      var header = document.createElement("p");
       var headerText = label.replace(/_/g, " "); // Replaces underscores with single space
       header.appendChild(document.createTextNode(headerText));
       metricElement.appendChild(header);
