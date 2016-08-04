@@ -36,8 +36,7 @@
     var row = document.createElement("div");
     row.setAttribute("class", "row");
 
-    var header = document.createElement("p");
-    header.setAttribute("class", "metric-header");
+    var header = document.createElement("h3");
     header.appendChild(document.createTextNode(this.title));
     row.appendChild(header);
 
@@ -50,18 +49,17 @@
 
   MetricGroup.prototype._createMetric = function(value, label) {
     var metricElement = document.createElement("div");
-    metricElement.setAttribute("class", "metric-container");
+    metricElement.setAttribute("class", "col-md-12");
+
     if (label) {
-      var header = document.createElement("p");
-      var headerText = label.replace(/_/g, " ");
-      header.setAttribute("class", "metric-sub-header");
+      var header = document.createElement("h5");
+      var headerText = label.replace(/_/g, " "); // Replaces underscores with single space
       header.appendChild(document.createTextNode(headerText));
       metricElement.appendChild(header);
     }
 
-    var content = document.createElement("p");
+    var content = document.createElement("h2");
     var contentValue = numberWithSpaces(value);
-    content.setAttribute("class", "metric-value");
     content.appendChild(document.createTextNode(contentValue));
     metricElement.appendChild(content);
 
@@ -92,8 +90,8 @@
       .map(function(d) {
         return d[columnName];
       })
-      .reduce(function(acc, curr) {
-        return acc + curr;
+      .reduce(function(accumulated, current) {
+        return accumulated + current;
       });
   }
 
