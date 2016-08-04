@@ -66,8 +66,11 @@
     return metricElement;
   }
 
-  MetricGroup.prototype.create = function() {
-    this.container.appendChild(this.element);
+  MetricGroup.prototype.create = function(position) {
+    this.container.insertBefore(
+      this.element,
+      this.container.children[position]
+    );
   }
 
 
@@ -95,20 +98,27 @@
       });
   }
 
-  function createMetricGroup (title, data, containerId, labelled) {
+  function createMetricGroup (title, data, containerId, position, labelled) {
     var container = document.getElementById(containerId);
     var metrics   = new MetricGroup(title, data, container, labelled);
-    metrics.create();
+    metrics.create(position);
   }
 
 
   /* Interface */
 
-  exports.generate = function (metricQueries) {
-    metricQueries.forEach( function (query) {
-      var results   = getQueryResultsByName(query);
-      var container = "metrics-container";
-      createMetricGroup(query, results[0], container, true);
+  exports.generate = function (metricQueries, position) {
+    metricQueries.forEach( function (query, i) {
+      var results = getQueryResultsByName(query);
+      var container = "container";
+      var currentPosition  = position + i;
+      createMetricGroup(
+        query,
+        results[0],
+        container,
+        currentPosition,
+        true
+      );
     });
   };
 
