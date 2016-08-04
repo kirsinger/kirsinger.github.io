@@ -36,8 +36,11 @@
     var row = document.createElement("div");
     row.setAttribute("class", "row");
 
-    var header = document.createElement("h3");
-    header.appendChild(document.createTextNode(this.title));
+    var header = document.createElement("div");
+    header.settAttribute("class", "mode-header");
+    var headerText = document.createElement("h3");
+    headerText.appendChild(document.createTextNode(this.title));
+    header.appendChild(headerText)
     row.appendChild(header);
 
     this.metrics.forEach( function(element) {
@@ -58,7 +61,7 @@
       metricElement.appendChild(header);
     }
 
-    var content = document.createElement("h2");
+    var content = document.createElement("p");
     var contentValue = numberWithSpaces(value);
     content.appendChild(document.createTextNode(contentValue));
     metricElement.appendChild(content);
