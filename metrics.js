@@ -37,7 +37,7 @@
     row.setAttribute("class", "row");
 
     var header = document.createElement("div");
-    header.settAttribute("class", "mode-header");
+    header.setAttribute("class", "mode-header");
     var headerText = document.createElement("h3");
     headerText.appendChild(document.createTextNode(this.title));
     header.appendChild(headerText)
