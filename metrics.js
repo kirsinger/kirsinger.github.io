@@ -80,10 +80,20 @@
   /* Helper Functions */
 
   function numberWithSpaces(number) {
+    //Disabled number formatting untill we decide
+    //how to properly handle other types of numbers
+    //correctly (eg: phone numbers)
+    /*
     if (number) {
       return number
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    } else {
+      return "0";
+    }
+    */
+    if (number) {
+      return number.toString();
     } else {
       return "0";
     }
