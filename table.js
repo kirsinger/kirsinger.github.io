@@ -29,7 +29,7 @@
     this.data.forEach( function(rowData, i) {
       var row = document.createElement('tr');
       for (var attribute in rowData) {
-        var cell = row.appendChild('td');
+        var cell = document.createElement('td');
         cell.appendChild(document.createTextNode(rowData[attribute]));
         row.appendChild(cell);
         this.element.appendChild(row);
