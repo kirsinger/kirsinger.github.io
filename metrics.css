@@ -1,3 +1,4 @@
+/* Single Value Metrics */
 div.metric-container {
   float: left;
   width: 25%;
@@ -16,3 +17,27 @@ p.metric-value {
   font-size: 20pt;
   font-weight: bold;
   margin: 0px;
+}
+
+
+/* Definition Lists */
+
+dl {
+  padding: 0 0 2em 0;
+  width: 75%;
+}
+
+dt {
+  float: left;
+  clear: left;
+  text-align: right;
+  font-weight: bold;
+  color: gray;
+}
+
+dd {
+  float: right;
+}
+
+
+/* Tables */
