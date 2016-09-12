@@ -21,19 +21,35 @@
   /* Objects */
 
   function Table (title, data, container) {
+
     this.title = title;
     this.container = container;
     this.data = data
 
     var table = document.createElement('table');
+
+    var header = document.createElement('tr');
+    for (var headerText in this.data[0]) {
+      var headerCell = document.createElement('th');
+      headerCell.appendChild(document.createTextNode(headerText));
+      header.appendChild(headerCell);
+    }
+    table.appendChild(header);
+
     this.data.forEach( function(rowData, i) {
       var row = document.createElement('tr');
+
       for (var attribute in rowData) {
         var cell = document.createElement('td');
-        cell.appendChild(document.createTextNode(rowData[attribute]));
+        cell.appendChild(
+          document.createTextNode(
+            rowData[attribute]
+          ));
         row.appendChild(cell);
       }
+
       table.appendChild(row);
+
     });
 
     this.element = table;
