@@ -21,17 +21,37 @@
   /* Objects */
 
   function Table (title, data, container) {
-    this.title     = title;
+    this.title = title;
     this.container = container;
+    this.data = data
+
+    this.element = document.createElement('table');
+    this.data.forEach( function(rowData, i) {
+      var row = document.createElement('tr');
+      for (var attribute in rowData) {
+        var cell = row.appendChild('td');
+        cell.appendChild(document.createTextNode(rowData[attribute]));
+        row.appendChild(cell);
+        this.element.appendChild(row);
+      }
+    });
+
   }
+
+  Table.prototype.create = function (position) {
+    this.container.insertBefore(
+      this.element,
+      this.container.children[position]
+    );
+  };
 
 
   /* Constructor */
 
   function createTable (title, data, containerId, position) {
     var container = document.getElementById(containerId);
-    var metrics   = new Table(title, data, container);
-    metrics.create(position);
+    var table = new Table(title, data, container);
+    table.create(position);
   }
 
 
@@ -43,6 +63,7 @@
     })[0].content;
   }
 
+
   /* Interface */
 
   exports.generate = function (queries, position) {
@@ -53,18 +74,12 @@
       var container = "container";
       var currentPosition  = position + i;
 
-      console.log(results);
-      console.log(container);
-      console.log(currentPosition);
-
-      /*
       createTable(
         query,
-        results[0],
+        results,
         container,
         currentPosition
       );
-      */
 
     });
 
