@@ -26,6 +26,11 @@
     this.container = container;
     this.data = data[0];
 
+    var bootstrapRow = document.createElement('div');
+    bootstrapRow.setAttribute('class', 'row')
+    var bootstrapCol = document.createElement('div');
+    bootstrapCol.setAttribute('class', 'col-md-12');
+
     var definition = document.createElement('dl');
 
     for (var attribute in this.data) {
@@ -38,7 +43,9 @@
       definition.appendChild(defData);
     }
 
-    this.element = definition;
+    bootstrapCol.append(definition);
+    bootstrapRow.appendChild(bootstrapCol);
+    this.element = bootstrapRow;
 
   }
 
