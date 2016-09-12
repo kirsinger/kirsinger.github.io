@@ -70,4 +70,4 @@
 
   };
 
-} ) ( this.metrics = {} );
+} ) ( this.table = {} );
