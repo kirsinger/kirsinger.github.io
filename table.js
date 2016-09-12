@@ -25,16 +25,18 @@
     this.container = container;
     this.data = data
 
-    this.element = document.createElement('table');
+    var table = document.createElement('table');
     this.data.forEach( function(rowData, i) {
       var row = document.createElement('tr');
       for (var attribute in rowData) {
         var cell = document.createElement('td');
         cell.appendChild(document.createTextNode(rowData[attribute]));
         row.appendChild(cell);
-        this.element.appendChild(row);
       }
+      table.appendChild(row);
     });
+
+    this.element = table;
 
   }
 
