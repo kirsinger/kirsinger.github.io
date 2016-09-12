@@ -43,7 +43,7 @@
       definition.appendChild(defData);
     }
 
-    bootstrapCol.append(definition);
+    bootstrapCol.appendChild(definition);
     bootstrapRow.appendChild(bootstrapCol);
     this.element = bootstrapRow;
 
