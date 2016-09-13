@@ -20,7 +20,7 @@
 
   /* Objects */
 
-  function Table (title, data, container, include_headers) {
+  function Table (title, data, container, include_title, include_headers) {
 
     this.title = title;
     this.container = container;
