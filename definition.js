@@ -29,7 +29,7 @@
     var bootstrapRow = document.createElement('div');
     bootstrapRow.setAttribute('class', 'row')
     var bootstrapCol = document.createElement('div');
-    bootstrapCol.setAttribute('class', 'col-md-12');
+    bootstrapCol.setAttribute('class', 'col-md-8');
 
     var definition = document.createElement('dl');
 

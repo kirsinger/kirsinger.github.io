@@ -26,6 +26,11 @@
     this.container = container;
     this.data = data
 
+    var bootstrapRow = document.createElement('div');
+    bootstrapRow.setAttribute('class', 'row')
+    var bootstrapCol = document.createElement('div');
+    bootstrapCol.setAttribute('class', 'col-md-8');
+
     var table = document.createElement('table');
 
     var header = document.createElement('tr');
@@ -52,7 +57,9 @@
 
     });
 
-    this.element = table;
+    bootstrapCol.appendChild(table);
+    bootstrapRow.appendChild(bootstrapCol);
+    this.element = bootstrapRow;
 
   }
 
