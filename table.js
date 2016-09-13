@@ -20,7 +20,7 @@
 
   /* Objects */
 
-  function Table (title, data, container) {
+  function Table (title, data, container, include_headers) {
 
     this.title = title;
     this.container = container;
@@ -31,15 +31,23 @@
     var bootstrapCol = document.createElement('div');
     bootstrapCol.setAttribute('class', 'col-md-8');
 
+    if (include_title) {
+      var titleElement = document.createElement('h3');
+      titleElement.appendChild(document.createTextNode(title));
+      bootstrapCol.appendChild(titleElement);
+    }
+
     var table = document.createElement('table');
 
-    var header = document.createElement('tr');
-    for (var headerText in this.data[0]) {
-      var headerCell = document.createElement('th');
-      headerCell.appendChild(document.createTextNode(headerText));
-      header.appendChild(headerCell);
+    if (include_headers) {
+      var header = document.createElement('tr');
+      for (var headerText in this.data[0]) {
+        var headerCell = document.createElement('th');
+        headerCell.appendChild(document.createTextNode(headerText));
+        header.appendChild(headerCell);
+      }
+      table.appendChild(header);
     }
-    table.appendChild(header);
 
     this.data.forEach( function(rowData, i) {
       var row = document.createElement('tr');
@@ -73,9 +81,9 @@
 
   /* Constructor */
 
-  function createTable (title, data, containerId, position) {
+  function createTable (title, data, containerId, position, include_title, include_headers) {
     var container = document.getElementById(containerId);
-    var table = new Table(title, data, container);
+    var table = new Table(title, data, container, include_title, include_headers);
     table.create(position);
   }
 
@@ -91,7 +99,7 @@
 
   /* Interface */
 
-  exports.generate = function (queries, position) {
+  exports.generate = function (queries, position, include_title, include_headers) {
 
     queries.forEach( function (query, i) {
 
@@ -103,7 +111,9 @@
         query,
         results,
         container,
-        currentPosition
+        currentPosition,
+        include_title,
+        include_headers
       );
 
     });
