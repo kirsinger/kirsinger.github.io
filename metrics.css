@@ -29,7 +29,7 @@ dl {
 dt {
   float: left;
   clear: left;
-  width: 340px;
+  width: 290px;
   text-align: right;
   font-weight: bold;
   margin-right: 8px;
@@ -65,19 +65,19 @@ table {
   margin-bottom: 20px;
 }
 
-table > thead > tr > th,
-table > tbody > tr > th,
-table > tfoot > tr > th,
-table > thead > tr > td,
-table > tbody > tr > td,
-table > tfoot > tr > td {
+table > tr > th,
+table > tr > th,
+table > tr > th,
+table > tr > td,
+table > tr > td,
+table > tr > td {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
 
-table > thead > tr > th {
+table > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #dddddd;
 }
