@@ -20,7 +20,7 @@
 
   /* Objects */
 
-  function Definition (title, data, container) {
+  function Definition (title, data, container, include_title) {
 
     this.title = title;
     this.container = container;
@@ -30,6 +30,12 @@
     bootstrapRow.setAttribute('class', 'row')
     var bootstrapCol = document.createElement('div');
     bootstrapCol.setAttribute('class', 'col-md-8');
+
+    if (include_title) {
+      var titleElement = document.createElement('h3');
+      titleElement.appendChild(document.createTextNode(title));
+      bootstrapCol.appendChild(titleElement);
+    }
 
     var definition = document.createElement('dl');
 
@@ -59,9 +65,9 @@
 
   /* Constructor */
 
-  function createDefinition (title, data, containerId, position) {
+  function createDefinition (title, data, containerId, position, include_title) {
     var container  = document.getElementById(containerId);
-    var definition = new Definition(title, data, container);
+    var definition = new Definition(title, data, container, include_title);
     definition.create(position);
   }
 
@@ -77,7 +83,7 @@
 
   /* Interface */
 
-  exports.generate = function (queries, position) {
+  exports.generate = function (queries, position, include_title) {
 
     queries.forEach( function (query, i) {
 
@@ -89,7 +95,8 @@
         query,
         results,
         container,
-        currentPosition
+        currentPosition,
+        include_title
       );
 
     });
