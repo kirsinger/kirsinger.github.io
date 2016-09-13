@@ -20,23 +20,64 @@ p.metric-value {
 }
 
 
-/* Definition Lists */
+/* Definition List */
 
 dl {
-  padding: 0 0 4em 0;
+  margin-bottom: 20px;
 }
 
 dt {
   float: left;
   clear: left;
+  width: 340px;
   text-align: right;
   font-weight: bold;
-  color: black;
+  margin-right: 8px;
+}
+
+dt:after {
+  content: ":";
 }
 
 dd {
-  float: right;
+  margin-bottom: 10px;
 }
 
 
-/* Tables */
+/* Table */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table {
+  max-width: 100%;
+  background-color: transparent;
+}
+
+th {
+  text-align: left;
+}
+
+table {
+  /*width: 100%;*/
+  margin-bottom: 20px;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+
+table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
+}
