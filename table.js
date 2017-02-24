@@ -43,7 +43,7 @@
         document.createTextNode(
           "No data available"
         ));
-      bootStrapCol.appendChild(noDataMessage);
+      bootstrapCol.appendChild(noDataMessage);
     } 
     else {
       var table = document.createElement('table');
