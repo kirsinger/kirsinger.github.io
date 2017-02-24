@@ -25,7 +25,10 @@
     this.title = title;
     this.container = container;
     this.data = data
-
+	
+    console.log(this.title);
+    console.log(this.data);
+    
     var bootstrapRow = document.createElement('div');
     bootstrapRow.setAttribute('class', 'row')
     var bootstrapCol = document.createElement('div');
