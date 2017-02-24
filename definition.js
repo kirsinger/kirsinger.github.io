@@ -36,23 +36,34 @@
       titleElement.appendChild(document.createTextNode(title));
       bootstrapCol.appendChild(titleElement);
     }
+    
+    if (!this.data.length) {
+      var noDataMessage = document.createElement('p');
+      noDataMessage.appendChild(
+        document.createTextNode(
+          "No data available"
+        ));
+      bootstrapCol.appendChild(noDataMessage);
+    } 
+    else {
+      var definition = document.createElement('dl');
 
-    var definition = document.createElement('dl');
+      for (var attribute in this.data) {
+        var defTitle = document.createElement('dt');
+        defTitle.appendChild(document.createTextNode(attribute));
+        definition.appendChild(defTitle);
 
-    for (var attribute in this.data) {
-      var defTitle = document.createElement('dt');
-      defTitle.appendChild(document.createTextNode(attribute));
-      definition.appendChild(defTitle);
+        var defData  = document.createElement('dd');
+        defData.appendChild(document.createTextNode(this.data[attribute]));
+        definition.appendChild(defData);
+      }
 
-      var defData  = document.createElement('dd');
-      defData.appendChild(document.createTextNode(this.data[attribute]));
-      definition.appendChild(defData);
+      bootstrapCol.appendChild(definition);
+    
     }
-
-    bootstrapCol.appendChild(definition);
+    
     bootstrapRow.appendChild(bootstrapCol);
     this.element = bootstrapRow;
-
   }
 
   Definition.prototype.create = function (position) {
