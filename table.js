@@ -26,10 +26,6 @@
     this.container = container;
     this.data = data
     
-	if (!this.data.length) {
-		console.log("This query has no data");	
-	}
-
     var bootstrapRow = document.createElement('div');
     bootstrapRow.setAttribute('class', 'row')
     var bootstrapCol = document.createElement('div');
@@ -40,36 +36,47 @@
       titleElement.appendChild(document.createTextNode(title));
       bootstrapCol.appendChild(titleElement);
     }
+    
+    if (!this.data.length) {
+      var noDataMessage = document.createElement('p');
+      noDataMessage.appendChild(
+        document.createTextNode(
+          "No data available"
+        ));
+      bootStrapCol.appendChild(noDataMessage);
+    } 
+    else {
+      var table = document.createElement('table');
 
-    var table = document.createElement('table');
-
-    if (include_headers) {
-      var header = document.createElement('tr');
-      for (var headerText in this.data[0]) {
-        var headerCell = document.createElement('th');
-        headerCell.appendChild(document.createTextNode(headerText));
-        header.appendChild(headerCell);
-      }
-      table.appendChild(header);
-    }
-
-    this.data.forEach( function(rowData, i) {
-      var row = document.createElement('tr');
-
-      for (var attribute in rowData) {
-        var cell = document.createElement('td');
-        cell.appendChild(
-          document.createTextNode(
-            rowData[attribute]
-          ));
-        row.appendChild(cell);
+      if (include_headers) {
+        var header = document.createElement('tr');
+        for (var headerText in this.data[0]) {
+          var headerCell = document.createElement('th');
+          headerCell.appendChild(document.createTextNode(headerText));
+          header.appendChild(headerCell);
+        }
+        table.appendChild(header);
       }
 
-      table.appendChild(row);
+      this.data.forEach( function(rowData, i) {
+        var row = document.createElement('tr');
 
-    });
+        for (var attribute in rowData) {
+          var cell = document.createElement('td');
+          cell.appendChild(
+            document.createTextNode(
+              rowData[attribute]
+            ));
+          row.appendChild(cell);
+        }
 
-    bootstrapCol.appendChild(table);
+        table.appendChild(row);
+
+      });
+
+      bootstrapCol.appendChild(table);
+	}
+    
     bootstrapRow.appendChild(bootstrapCol);
     this.element = bootstrapRow;
 
